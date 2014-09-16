@@ -3,14 +3,20 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 
 public class DownGame extends BasicGame{
 	public static final int GAME_WIDTH = 640;
     public static final int GAME_HEIGHT = 720;
+    public static final float JUMP_SPEED = 10;
     private Image BackGroundImage;
     private StickMan stickman;
+    public static boolean isOnLeft = true;
+    public static boolean isOnRight = false;
+    public static int jumpl2r =0;
+    public static int jumpr2l =0;
     
 	public DownGame(String title) {
 		super(title);
@@ -27,12 +33,32 @@ public class DownGame extends BasicGame{
       BackGroundImage = new Image("res/BackGroundWallpaper.png");
       stickman = new StickMan();
       
+      
     }
    
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-    	
+    	stickman.update();
+    	//System.out.println(DownGame.isOnLeft);
     }
+    
+    @Override
+	  public void keyPressed(int key, char c) {
+    	if (key == Input.KEY_LSHIFT) {
+	    	if(isOnLeft == true){
+    		jumpl2r=1;
+	    	jumpr2l=0;
+	    	}
+	    	//stickman.jump();
+	    }
+    	if (key == Input.KEY_LSHIFT) {
+	    	if(isOnLeft == false){
+    		jumpl2r=0; 
+	    	jumpr2l=1;
+	    	}
+	    	//stickman.jump();
+	    }
+	  }
     
 	public static void main(String[] args) {
 		try {
