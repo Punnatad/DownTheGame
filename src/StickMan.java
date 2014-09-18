@@ -5,32 +5,48 @@ import org.newdawn.slick.SlickException;
 
 
 public class StickMan {
-	private Image StickManImage;
+	private Image StickManImage_Left;
+	private Image StickManImage_Right;
+	private Image StickManImage_JumpfromLeft;
+	private Image StickManImage_JumpfromRight;
+	public static final int JUMP_SPEED = 16;
 	public static final int WIDTH = 90;
 	public static final int HEIGHT = 150;
 	private float x;
-	//private float vx = 10;
+	
 	
 	
 	public StickMan() throws SlickException {
-		 StickManImage = new Image("res/StickMan_Left.png");
+		 StickManImage_Left = new Image("res/StickMan_Left.png");
+		 StickManImage_Right = new Image("res/StickMan_Right.png");
+		 StickManImage_JumpfromLeft = new Image("res/StickMan_JumpToRight.png");
+		 StickManImage_JumpfromRight = new Image("res/StickMan_JumpToLeft.png");
 		 this.x = 0;
 		 
 	  }
 	 
 	 
 	  public void render(){
-	    StickManImage.draw(x,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    if(x == 0){
+	    	StickManImage_Left.draw(x,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    }
+	    else if(x > 0 && x <= DownGame.GAME_WIDTH/4){
+	    	StickManImage_JumpfromLeft.draw(x,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    }
+	    else if(x > DownGame.GAME_WIDTH/4 && x < DownGame.GAME_WIDTH/2){
+	    	StickManImage_JumpfromRight.draw(x-WIDTH,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    }
+	    
+	    else if(x == DownGame.GAME_WIDTH/2){
+	    	StickManImage_Right.draw(x-WIDTH,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    }
 	  }
-	 
 	  
 	  public void update(){
 		  if(x < DownGame.GAME_WIDTH/2 && DownGame.jumpl2r ==1){
-			 
 			  jumpl2r();
 		  }
-		  else if(x > 0 && DownGame.jumpr2l ==1){
-			 
+		  else if(x > 0 && DownGame.jumpr2l == 1){
 			  jumpr2l();
 		  }
 		  if(x > 0 && x < DownGame.GAME_WIDTH/2){
@@ -43,37 +59,20 @@ public class StickMan {
 		  if(x == 0){
 			  DownGame.isOnLeft = true;
 		  }
+		  if(x == DownGame.GAME_WIDTH/2){
+			  DownGame.isOnRight = true;
+		  }
 	  }
 	  
 	  public void jumpl2r() {
-		  //if(DownGame.isOnLeft == true){
-			/*while(true){
-				 x+=1;
-				 if(x == DownGame.GAME_WIDTH/2){
-					 break;
-				 }
-			 }*/
 			  if(x <= DownGame.GAME_WIDTH/2)
-				  x+=10;
-			   
+				  x += JUMP_SPEED;   
 		  }
-		 /* else if(DownGame.isOnLeft == false){
-			  	x -= DownGame.GAME_WIDTH/2;
-		  }*/
+	  
 	  public void jumpr2l() {
-		  //if(DownGame.isOnLeft == true){
-			/*while(true){
-				 x+=1;
-				 if(x == DownGame.GAME_WIDTH/2){
-					 break;
-				 }
-			 }*/
 			  if(x >0)
-				  x-=10;
+				  x -= JUMP_SPEED;
 			   
 		  }
-		 /* else if(DownGame.isOnLeft == false){
-			  	x -= DownGame.GAME_WIDTH/2;
-		  }*/
 	  }
 
