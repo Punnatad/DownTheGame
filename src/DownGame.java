@@ -15,7 +15,7 @@ public class DownGame extends BasicGame{
     public static final float JUMP_SPEED = 10;
     private Image BackGroundImage;
     private StickMan stickman;
-   // private Spike_LeftSide SpikeLeftSide;
+    //private Spike_LeftSide SpikeLeftSide;
     private Spike_LeftSide[] SpikeLeftSide;
     public static boolean isOnLeft = true;
     public static boolean isOnRight = false;
@@ -23,6 +23,7 @@ public class DownGame extends BasicGame{
     public static int jumpr2l = 0;
     public static float delay;
     public static Random random = new Random();
+    public static int y;
     
 	public DownGame(String title) {
 		super(title);
@@ -45,16 +46,16 @@ public class DownGame extends BasicGame{
     }
    
     private void initSpikes() throws SlickException{
-    	SpikeLeftSide = new Spike_LeftSide[4];
-	    for (int i = 0; i < 4; i++) {
+    	SpikeLeftSide = new Spike_LeftSide[3];
+	    for (int i = 0; i < 3; i++) {
 	    		SpikeLeftSide[i] = new Spike_LeftSide();
 	    		float randomY = GAME_HEIGHT+randomNum();
+	    		if(i>0){
+	    		if(SpikeLeftSide[i].getY()-SpikeLeftSide[i-1].getY() <= 100 ){
+	    		SpikeLeftSide[i] = new Spike_LeftSide(0, randomY+i*500);	}}
 	    		SpikeLeftSide[i].randomSide();
-	    		SpikeLeftSide[i] = new Spike_LeftSide(0, randomY);	
-	    		
 	    		System.out.println("Spike"+i+" y = "+randomY);
 	    }
-	    
 		
 	}
 
@@ -96,6 +97,6 @@ public class DownGame extends BasicGame{
 	}
 
 	public static float randomNum(){
-		return random.nextInt(500)+50;
+		return GAME_HEIGHT + random.nextInt(100);
 	}
 }
