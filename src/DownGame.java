@@ -15,13 +15,11 @@ public class DownGame extends BasicGame{
     public static final float JUMP_SPEED = 10;
     private Image BackGroundImage;
     private StickMan stickman;
-    //private Spike_LeftSide SpikeLeftSide;
-    private Spike_LeftSide[] SpikeLeftSide;
+    private static Spike_LeftSide[] SpikeLeftSide;
     public static boolean isOnLeft = true;
     public static boolean isOnRight = false;
     public static int jumpl2r = 0;
     public static int jumpr2l = 0;
-    public static float delay;
     public static Random random = new Random();
     public static int y;
     
@@ -51,8 +49,13 @@ public class DownGame extends BasicGame{
 	    		SpikeLeftSide[i] = new Spike_LeftSide();
 	    		float randomY = GAME_HEIGHT+randomNum();
 	    		if(i>0){
-	    		if(SpikeLeftSide[i].getY()-SpikeLeftSide[i-1].getY() <= 100 ){
-	    		SpikeLeftSide[i] = new Spike_LeftSide(0, randomY+i*500);	}}
+	    			if(SpikeLeftSide[i].getY()-SpikeLeftSide[i-1].getY() <= 100 ){
+	    				SpikeLeftSide[i] = new Spike_LeftSide(0, randomY+i*500);	
+	    			}
+	    			else{
+	    				SpikeLeftSide[i] = new Spike_LeftSide(0, randomY);
+	    			}
+	    		}
 	    		SpikeLeftSide[i].randomSide();
 	    		System.out.println("Spike"+i+" y = "+randomY);
 	    }
@@ -95,8 +98,12 @@ public class DownGame extends BasicGame{
 		    }
 
 	}
+	
+	public static float getYspikeBefore() {
+		return Math.max(SpikeLeftSide[2].y,(Math.max(SpikeLeftSide[0].y, SpikeLeftSide[1].y)));
+	}
 
 	public static float randomNum(){
-		return GAME_HEIGHT + random.nextInt(100);
+		return random.nextInt(100);
 	}
 }
