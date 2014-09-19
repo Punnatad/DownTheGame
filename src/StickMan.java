@@ -12,7 +12,8 @@ public class StickMan {
 	public static final int JUMP_SPEED = 16;
 	public static final int WIDTH = 90;
 	public static final int HEIGHT = 150;
-	private float x;
+	public float x;
+	public float y = DownGame.GAME_HEIGHT/6;
 	
 	
 	
@@ -21,24 +22,24 @@ public class StickMan {
 		 StickManImage_Right = new Image("res/StickMan_Right.png");
 		 StickManImage_JumpfromLeft = new Image("res/StickMan_JumpToRight.png");
 		 StickManImage_JumpfromRight = new Image("res/StickMan_JumpToLeft.png");
-		 this.x = 0;
+		 //this.x = 0;
 		 
 	  }
 	 
 	 
 	  public void render(){
 	    if(x == 0){
-	    	StickManImage_Left.draw(x,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    	StickManImage_Left.draw(x,y,WIDTH,HEIGHT);
 	    }
 	    else if(x > 0 && x <= DownGame.GAME_WIDTH/4){
-	    	StickManImage_JumpfromLeft.draw(x,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    	StickManImage_JumpfromLeft.draw(x,y,WIDTH,HEIGHT);
 	    }
 	    else if(x > DownGame.GAME_WIDTH/4 && x < DownGame.GAME_WIDTH/2){
-	    	StickManImage_JumpfromRight.draw(x-WIDTH,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    	StickManImage_JumpfromRight.draw(x-WIDTH,y,WIDTH,HEIGHT);
 	    }
 	    
 	    else if(x == DownGame.GAME_WIDTH/2){
-	    	StickManImage_Right.draw(x-WIDTH,DownGame.GAME_HEIGHT/6,WIDTH,HEIGHT);
+	    	StickManImage_Right.draw(x-WIDTH,y,WIDTH,HEIGHT);
 	    }
 	  }
 	  
@@ -62,6 +63,10 @@ public class StickMan {
 		  if(x == DownGame.GAME_WIDTH/2){
 			  DownGame.isOnRight = true;
 		  }
+
+		  /*if(CollisionDetector.isCollide(x,y,Spike_LeftSide.x,Spike_LeftSide.y) == true){
+	    		System.out.println("Collision!!");
+		  }*/
 	  }
 	  
 	  public void jumpl2r() {
@@ -72,7 +77,12 @@ public class StickMan {
 	  public void jumpr2l() {
 			  if(x >0)
 				  x -= JUMP_SPEED;
-			   
-		  }
 	  }
+	  //public  float getX() { return x; }
+	  //public  float getY() { return y; }
+		
+	  public boolean isCollide(Spike_LeftSide s) {
+		    return CollisionDetector.isCollide(x, y, s.getX(), s.getY());	
+	  }
+}
 

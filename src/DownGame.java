@@ -57,7 +57,7 @@ public class DownGame extends BasicGame{
 	    			}
 	    		}
 	    		SpikeLeftSide[i].randomSide();
-	    		System.out.println("Spike"+i+" y = "+randomY);
+	    		//System.out.println("Spike"+i+" y = "+randomY);
 	    }
 		
 	}
@@ -67,8 +67,12 @@ public class DownGame extends BasicGame{
     	stickman.update();
     	for (Spike_LeftSide Spike : SpikeLeftSide) {  
     		Spike.update();
+    		if(stickman.isCollide(Spike) == true){
+    			//System.out.println("Collision!!");
+    		}
+
 		}
-    }
+     }
     
     @Override
 	  public void keyPressed(int key, char c) {
@@ -106,4 +110,6 @@ public class DownGame extends BasicGame{
 	public static float randomNum(){
 		return random.nextInt(100);
 	}
+	
+	
 }
