@@ -1,52 +1,33 @@
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Polygon;
 import org.newdawn.slick.geom.Shape;
-
 
 public class CollisionDetector {
 	
-	public Shape triangle = null; 
+	public static Shape triangle = null;
 	
-	
-	
-	
-	static boolean isCollide(float stickX, float stickY, float spikeX, float spikeY) {
-		//System.out.println("stickY+stickManHEIGHT"+stickY+StickMan.HEIGHT);
-	    if(stickX <= spikeX+Spike_LeftSide.WIDTH  && stickX+ StickMan.WIDTH > spikeX){
-	    	if(stickY <= spikeY+Spike_LeftSide.HEIGHT/2 + 10 && stickY > spikeY+Spike_LeftSide.HEIGHT/2 - 10){
-	    		System.out.println("Collision1");
-	    		return true;
-	    	}
-	    	
-	    }
-	    
-	    //if(stickX + StickMan.WIDTH > spikeX+Spike_LeftSide.WIDTH-10 && stickX + StickMan.WIDTH <= spikeX+Spike_LeftSide.WIDTH ){
-	    /*	if(stickY+StickMan.HEIGHT >= spikeY || stickY <= Spike_LeftSide.HEIGHT){
-	    		System.out.println("Collision2");
-	    		return true;
-	    	}*/
-	    //}
-	   /*
-	    if(stickX >= spikeX && stickX <= spikeX + 10 ){
-	    	if(stickY+StickMan.HEIGHT >= spikeY || stickY <= Spike_LeftSide.HEIGHT){
-	    		System.out.println("Collision3");
-	    		return true;
-	    	}
-	    }*/
-	  
-	    if(stickX+ StickMan.WIDTH +0.15== DownGame.GAME_WIDTH/2 ){
-	    	if(stickY+StickMan.HEIGHT < spikeY+Spike_LeftSide.HEIGHT && stickY+StickMan.HEIGHT >= spikeY || stickY >= spikeY && stickY <= spikeY+ Spike_LeftSide.HEIGHT){
-	    		System.out.println("Collision2");
-	    		
-	    		return true;
-	    	}
-	    }
-	    
-	    if(stickX == spikeX  ){
-	    	if((stickY+StickMan.HEIGHT < spikeY+Spike_LeftSide.HEIGHT && stickY+StickMan.HEIGHT > spikeY) || (stickY > spikeY && stickY < spikeY+ Spike_LeftSide.HEIGHT)){
-	    		System.out.println("Collision3");
-	    		return true;
-	    	}
-	    }
-		return false;
+	public void init() throws SlickException {
+	    float[] points = new float[]{0,DownGame.GAME_HEIGHT/6 ,0,DownGame.GAME_HEIGHT/6+100, 60,(2*DownGame.GAME_HEIGHT+100)/2 };
+		triangle = new Polygon(points);
 	}
+    
+	/*public boolean contains(double x, double y)
+	{
+	    if (this.contains(x, y))
+	    {
+	        return true;
+	    }
+	    else
+	    {
+	        return false;
+	    }
+	}*/
 	
+	/*static boolean isCollide(float stickX, float stickY, float spikeX, float spikeY) {
+		if(triangle.contains(stickX,stickY)){
+			System.out.println("coliision1");
+			return true;
+		}
+		return false;
+	}*/
 }

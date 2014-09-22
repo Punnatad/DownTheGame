@@ -78,11 +78,15 @@ public class StickMan {
 			  if(x >0)
 				  x -= JUMP_SPEED;
 	  }
-	  //public  float getX() { return x; }
-	  //public  float getY() { return y; }
+	  public  float getX() { return x; }
+	  public  float getY() { return y; }
 		
-	  public boolean isCollide(Spike_LeftSide s) {
+	  /*public boolean isCollide(Spike_LeftSide s) {
 		    return CollisionDetector.isCollide(x, y, s.getX(), s.getY());	
-	  }
+	  }*/
+	  
+	  /*public boolean isCollide(){
+		  return Triangle.contains(x,y);
+	  }*/
 }
 

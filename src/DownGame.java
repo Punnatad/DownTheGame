@@ -9,6 +9,7 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 
+
 public class DownGame extends BasicGame{
 	public static final int GAME_WIDTH = 640;
     public static final int GAME_HEIGHT = 720;
@@ -34,6 +35,8 @@ public class DownGame extends BasicGame{
     	for (Spike_LeftSide Spike : SpikeLeftSide) {
 		      Spike.render();
 		}
+    	
+    	
       }
    
     @Override
@@ -41,6 +44,7 @@ public class DownGame extends BasicGame{
       BackGroundImage = new Image("res/BackGroundWallpaper.png");
       stickman = new StickMan();
       initSpikes();
+      
     }
    
     private void initSpikes() throws SlickException{
@@ -67,9 +71,10 @@ public class DownGame extends BasicGame{
     	stickman.update();
     	for (Spike_LeftSide Spike : SpikeLeftSide) {  
     		Spike.update();
-    		if(stickman.isCollide(Spike) == true){
+    		if(stickman.isCollide() == true){
     			//System.out.println("Collision!!");
     		}
+    		
 
 		}
      }
