@@ -43,6 +43,7 @@ public class DownGame extends BasicGame{
     public void init(GameContainer container) throws SlickException {
       BackGroundImage = new Image("res/BackGroundWallpaper.png");
       stickman = new StickMan();
+      
       initSpikes();
       
     }
@@ -71,9 +72,11 @@ public class DownGame extends BasicGame{
     	stickman.update();
     	for (Spike_LeftSide Spike : SpikeLeftSide) {  
     		Spike.update();
-    		if(stickman.isCollide() == true){
-    			//System.out.println("Collision!!");
+    		if(stickman.isCollide(Spike) == true){
+    			System.out.println("Collision!!");
     		}
+    		
+    		    		
     		
 
 		}
