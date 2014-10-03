@@ -23,6 +23,8 @@ public class DownGame extends BasicGame{
     public static int jumpr2l = 0;
     public static Random random = new Random();
     public static int y;
+    public static int Score;
+    public static boolean isStarted = false;
     
 	public DownGame(String title) {
 		super(title);
@@ -34,6 +36,7 @@ public class DownGame extends BasicGame{
     	stickman.render();
     	for (Spike_LeftSide Spike : SpikeLeftSide) {
 		      Spike.render();
+		      
 		}
     	
     	
@@ -69,17 +72,17 @@ public class DownGame extends BasicGame{
 
 	@Override
     public void update(GameContainer container, int delta) throws SlickException {
-    	stickman.update();
-    	for (Spike_LeftSide Spike : SpikeLeftSide) {  
-    		Spike.update();
-    		if(stickman.isCollide(Spike) == true){
-    			System.out.println("Collision!!");
+    	if(isStarted == true){
+    		stickman.update();
+    		for (Spike_LeftSide Spike : SpikeLeftSide) {  
+    			Spike.update();
+    			if(stickman.isCollide(Spike) == true){
+    				//System.out.println("Collision!!");
+    				isStarted = false;
+    			}
     		}
-    		
-    		    		
-    		
-
-		}
+    	}
+    	
      }
     
     @Override
@@ -95,6 +98,9 @@ public class DownGame extends BasicGame{
 	    		jumpr2l=1;
 	    	}
 	    }
+    	if(key == Input.KEY_ENTER){
+    		isStarted = true;
+    	}
 	  }
     
 	public static void main(String[] args) {
@@ -118,6 +124,7 @@ public class DownGame extends BasicGame{
 	public static float randomNum(){
 		return random.nextInt(100);
 	}
+	
 	
 	
 }

@@ -18,6 +18,7 @@ public class Spike_LeftSide {
 	public int ry;
 	public int rs;
 	
+	
 	public Spike_LeftSide() throws SlickException {
 		 SpikeOnLeft = new Image("res/SpikeLeft.png");
 		 SpikeOnRight = new Image("res/SpikeRight.png");
@@ -43,6 +44,7 @@ public class Spike_LeftSide {
 	
 	public void update(){ 
 		
+		updateScore();
 		this.y -= Spike_Speed;
 		if(y < 0 && DownGame.getYspikeBefore() < DownGame.GAME_HEIGHT - 800){
 	    	this.y = DownGame.GAME_HEIGHT + DownGame.randomNum();
@@ -51,6 +53,14 @@ public class Spike_LeftSide {
 		
 		
 	}
+	
+	public void updateScore(){
+		if(getY() == DownGame.GAME_HEIGHT/6){
+			DownGame.Score++;
+		}
+		System.out.println("Score: "+DownGame.Score);
+	}
+	
 	public void randomSide(){
 		int rand = random.nextInt(10);
 		if(rand%2 == 0){
@@ -62,6 +72,7 @@ public class Spike_LeftSide {
 			OnLeft = false;
 			this.x = DownGame.GAME_WIDTH/2-WIDTH;
 			//System.out.println("right");
+			//System.out.println("Spike x: "+x);
 		}
 	}
 	

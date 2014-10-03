@@ -82,7 +82,9 @@ public class StickMan {
 	  public float getY() { return y; }
 		
 	  public boolean isCollide(Spike_LeftSide s) {
-		    return CollisionDetector.isCollide(x, y, s.getX(), s.getY());	
+		  	boolean check = CollisionDetector.isCollide(x, y, s.getX(), s.getY()) || CollisionDetector.isCollideRight(x, y, s.getX(), s.getY());
+		    //return CollisionDetector.isCollide(x, y, s.getX(), s.getY());	
+		  	return check;
 	  }
 	  
 	  /*public boolean isCollide() {
