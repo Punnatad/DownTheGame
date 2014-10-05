@@ -46,7 +46,7 @@ public class SpikeonRightScreen {
 		
 		//updateScore();
 		this.y -= Spike_Speed;
-		if(y < 0 && DownGame.getYspikeBefore2() < DownGame.GAME_HEIGHT - 300){
+		if(y < 0 && DownGame.getYspikeBefore2() < DownGame.GAME_HEIGHT - 500){
 	    	this.y = DownGame.GAME_HEIGHT + DownGame.randomNum();
 	    	randomSide();
 	    }

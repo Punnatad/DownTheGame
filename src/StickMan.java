@@ -22,7 +22,7 @@ public class StickMan {
 		 StickManImage_Right = new Image("res/StickMan_Right.png");
 		 StickManImage_JumpfromLeft = new Image("res/StickMan_JumpToRight.png");
 		 StickManImage_JumpfromRight = new Image("res/StickMan_JumpToLeft.png");
-		 //this.x = 0;
+		 
 		 
 	  }
 	 
@@ -51,17 +51,17 @@ public class StickMan {
 			  jumpr2l();
 		  }
 		  if(x > 0 && x < DownGame.GAME_WIDTH/2){
-			  DownGame.isOnLeft = false;
-			  DownGame.isOnRight = false;
+			  DownGame.StickMan1isOnLeft = false;
+			  DownGame.StickMan1isOnRight = false;
 		  }
 		  if(x == DownGame.GAME_WIDTH/2){
-			  DownGame.isOnRight = true;
+			  DownGame.StickMan1isOnRight = true;
 		  }
 		  if(x == 0){
-			  DownGame.isOnLeft = true;
+			  DownGame.StickMan1isOnLeft = true;
 		  }
 		  if(x == DownGame.GAME_WIDTH/2){
-			  DownGame.isOnRight = true;
+			  DownGame.StickMan1isOnRight = true;
 		  }
 
 		  /*if(CollisionDetector.isCollide(x,y,Spike_LeftSide.x,Spike_LeftSide.y) == true){
@@ -81,7 +81,7 @@ public class StickMan {
 	  public float getX() { return x; }
 	  public float getY() { return y; }
 		
-	  public boolean isCollide(Spike_LeftSide s) {
+	  public boolean isCollide(SpikeonLeftScreen s) {
 		  	boolean check = CollisionDetector.isCollide(x, y, s.getX(), s.getY()) || CollisionDetector.isCollideRight(x, y, s.getX(), s.getY());
 		    //return CollisionDetector.isCollide(x, y, s.getX(), s.getY());	
 		  	return check;
