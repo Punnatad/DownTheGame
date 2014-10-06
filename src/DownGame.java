@@ -152,6 +152,7 @@ public class DownGame extends BasicGame{
 	    }
     	if(key == Input.KEY_ENTER){
     		isStarted = true;
+    		Score = 0;
     	}
 	  }
     

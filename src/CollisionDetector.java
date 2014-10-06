@@ -20,7 +20,7 @@ public class CollisionDetector {
 		
 		float denominator = ((y2 - y3)*(x1 - x3) + (x3 - x2)*(y1 - y3));
 		float a = ((y2 - y3)*(x - x3) + (x3 - x2)*(y - y3)) / denominator;
-		float b= ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator;
+		float b = ((y3 - y1)*(x - x3) + (x1 - x3)*(y - y3)) / denominator;
 		float c = 1 - a - b;
 		boolean chk1 = 0 <= a && a <= 1 && 0 <= b && b <= 1 && 0 <= c && c <= 1;
 		
